@@ -486,6 +486,163 @@ function TimesProTools({ onNavigate }: { onNavigate: (page: string) => void }) {
   );
 }
 
+function SoftwarePage({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const softwares = [
+    {
+      title: "TimesPro CRM",
+      subtitle: "Software completo para gestão",
+      description: "O cérebro digital da sua operação. Controle total de atletas, arrecadação, mensalidades, contratos e fluxo de caixa centralizados em um ecossistema inteligente.",
+      icon: PieChart,
+      accent: "text-lime-400",
+      bgAccent: "bg-lime-400/10 border-lime-400/20",
+      features: [
+        "Gestão financeira e prestação de contas",
+        "Controle de mensalidades e repasses",
+        "Base centralizada de atletas e comissão",
+        "Automatização de cobranças e alertas"
+      ]
+    },
+    {
+      title: "TimesPage",
+      subtitle: "Builder de site e gerenciador para times",
+      description: "Sua vitrine oficial na internet. Construtor intuitivo feito para clubes criarem portais de notícias, área da transparência e páginas para atrair grandes patrocinadores.",
+      icon: Layout,
+      accent: "text-white",
+      bgAccent: "bg-white/5 border-white/10",
+      features: [
+        "Construtor visual sem necessidade de código",
+        "Portal oficial de notícias e resultados",
+        "Página exclusiva da transparência e projetos",
+        "Espaços magnéticos para patrocinadores master"
+      ]
+    },
+    {
+      title: "App Mobile",
+      subtitle: "A ferramenta do clube na palma da mão",
+      description: "Aplicativo com a cara do clube feito para torcedores engajarem, comprarem ingressos e produtos, e atletas monitorarem scout, presença e agenda em tempo real.",
+      icon: Smartphone,
+      accent: "text-lime-500",
+      bgAccent: "bg-lime-500/10 border-lime-500/20",
+      features: [
+        "Identidade 100% customizada com escudo e cores",
+        "Engajamento contínuo da torcida em um só lugar",
+        "Acesso rápido ao scout e estatísticas do atleta",
+        "Calendário de treinos e jogos sincronizado"
+      ]
+    }
+  ];
+
+  return (
+    <div className="pt-32 pb-24 px-6 max-w-7xl mx-auto relative overflow-hidden bg-zinc-950 text-white min-h-screen">
+      {/* Glow de Fundo Subjacente */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-lime-500/10 rounded-full blur-[140px] pointer-events-none" />
+
+      {/* Cabeçalho de Altíssimo Impacto */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-3xl mx-auto text-center mb-20 relative z-10"
+      >
+        <span className="inline-block text-lime-400 font-black uppercase tracking-[0.3em] text-xs mb-4 px-4 py-1.5 bg-lime-400/10 rounded-full border border-lime-400/20">
+          TECNOLOGIA PROPRIETÁRIA
+        </span>
+        <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight mb-6">
+          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400">Nossos Softwares</span> <br />
+          <span className="text-lime-500">Exclusivos</span>
+        </h1>
+        <p className="text-lg text-zinc-400 leading-relaxed font-light">
+          Conheça as soluções desenvolvidas nativamente para colocar a gestão, a presença digital e a operação do seu time no mais alto nível de profissionalismo.
+        </p>
+      </motion.div>
+
+      {/* Grid das 3 Soluções */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+        {softwares.map((sw, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.15 }}
+            className="rounded-[32px] bg-zinc-900 border border-zinc-800 p-8 flex flex-col justify-between shadow-xl relative overflow-hidden group hover:border-zinc-700 transition-all duration-500"
+          >
+            {/* Efeito de iluminação suave no hover */}
+            <div className="absolute -right-12 -top-12 w-32 h-32 bg-lime-400/5 rounded-full blur-2xl group-hover:bg-lime-400/10 transition-all duration-500 pointer-events-none" />
+
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black ${sw.bgAccent} border`}>
+                  <sw.icon className={`w-6 h-6 ${sw.accent}`} strokeWidth={2.5} />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-zinc-500">
+                  Módulo 0{idx + 1}
+                </span>
+              </div>
+
+              <h3 className="text-2xl font-black text-white tracking-tight mb-1">
+                {sw.title}
+              </h3>
+              <p className="text-xs font-bold text-lime-400 uppercase tracking-wider mb-4">
+                {sw.subtitle}
+              </p>
+
+              <p className="text-zinc-400 text-sm leading-relaxed font-light mb-8">
+                {sw.description}
+              </p>
+            </div>
+
+            <div className="space-y-3 pt-6 border-t border-zinc-800/80">
+              {sw.features.map((feat, fIdx) => (
+                <div key={fIdx} className="flex items-start gap-3 text-xs text-zinc-300">
+                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0 mt-0.5" />
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Inferior Integrado no Card */}
+            <div className="mt-8 pt-4">
+              <button 
+                onClick={() => onNavigate("tools")}
+                className="w-full py-3 bg-zinc-950 text-zinc-300 hover:text-white rounded-xl font-bold text-xs border border-zinc-800 hover:border-lime-500/30 transition-all inline-flex items-center justify-center gap-2 group/btn"
+              >
+                <span>Ver recursos operacionais</span>
+                <ChevronRight className="w-3.5 h-3.5 text-lime-400 group-hover/btn:translate-x-1 transition-transform" />
+              </button>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Bloco Exclusivo de Sincronia */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.5 }}
+        className="mt-16 bg-gradient-to-r from-zinc-900 to-zinc-950 border border-zinc-800 rounded-3xl p-8 max-w-4xl mx-auto text-center flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl relative z-10"
+      >
+        <div className="text-left">
+          <div className="flex items-center gap-2 text-lime-400 text-xs font-bold uppercase tracking-widest mb-1">
+            <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
+            Sincronia Nativa em Tempo Real
+          </div>
+          <h4 className="text-lg font-bold text-white tracking-tight">
+            Três frentes, um único cérebro de dados
+          </h4>
+          <p className="text-xs text-zinc-400 font-light mt-0.5 max-w-md">
+            Uma atualização de atleta ou de mensalidade no CRM reflete instantaneamente no portal oficial e no aplicativo mobile da torcida.
+          </p>
+        </div>
+        <button 
+          onClick={() => onNavigate("tools")}
+          className="px-6 py-3 bg-lime-400 text-zinc-950 rounded-xl font-black text-xs uppercase tracking-wider hover:bg-lime-300 transition-all shadow-lg hover:scale-105 shrink-0"
+        >
+          Explorar Ecossistema
+        </button>
+      </motion.div>
+    </div>
+  );
+}
+
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -538,12 +695,14 @@ export default function App() {
     }
   ];
 
+  const isDarkPage = currentPage === 'home' || currentPage === 'software';
+
   return (
-    <div className={`min-h-screen transition-colors duration-500 ${currentPage === 'home' ? 'bg-zinc-950 text-white' : 'bg-[#f8f9fa] text-zinc-900'}`}>
+    <div className={`min-h-screen transition-colors duration-500 ${isDarkPage ? 'bg-zinc-950 text-white' : 'bg-[#f8f9fa] text-zinc-900'}`}>
       {/* Navigation */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-            ? currentPage === 'home'
+            ? isDarkPage
               ? "bg-zinc-950/80 backdrop-blur-md border-b border-white/5 py-4"
               : "bg-white/80 backdrop-blur-md border-b border-zinc-200 py-4 shadow-sm"
             : "bg-transparent py-6"
@@ -554,18 +713,19 @@ export default function App() {
             <div className="w-10 h-10 bg-lime-400 rounded-lg flex items-center justify-center">
               <Trophy className="text-zinc-950 w-6 h-6" />
             </div>
-            <span className={`text-2xl font-display font-bold tracking-tighter ${currentPage === 'home' ? 'text-white' : 'text-zinc-900'}`}>TIMES PRO</span>
+            <span className={`text-2xl font-display font-bold tracking-tighter ${isDarkPage ? 'text-white' : 'text-zinc-900'}`}>TIMES PRO</span>
           </div>
 
-          <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${currentPage === 'home' ? 'text-zinc-400' : 'text-zinc-500'}`}>
-            <button onClick={() => setCurrentPage("home")} className={`hover:text-lime-400 transition-colors ${currentPage === 'home' ? 'text-lime-400' : ''}`}>Home</button>
-            <button onClick={() => setCurrentPage("tools")} className={`hover:text-lime-400 transition-colors ${currentPage === 'tools' ? 'text-lime-400' : ''}`}>Soluções</button>
+          <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${isDarkPage ? 'text-zinc-400' : 'text-zinc-500'}`}>
+            <button onClick={() => setCurrentPage("home")} className={`hover:text-lime-400 transition-colors ${currentPage === 'home' ? 'text-lime-400 font-bold' : ''}`}>Home</button>
+            <button onClick={() => setCurrentPage("software")} className={`hover:text-lime-400 transition-colors ${currentPage === 'software' ? 'text-lime-400 font-bold' : ''}`}>Softwares</button>
+            <button onClick={() => setCurrentPage("tools")} className={`hover:text-lime-400 transition-colors ${currentPage === 'tools' ? 'text-lime-600 font-bold' : ''}`}>Soluções</button>
             <button className="px-5 py-2 bg-lime-400 text-zinc-950 rounded-full font-bold hover:bg-lime-300 transition-all transform hover:scale-105">
               Começar Agora
             </button>
           </div>
 
-          <button className={`md:hidden ${currentPage === 'home' ? 'text-zinc-100' : 'text-zinc-900'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className={`md:hidden ${isDarkPage ? 'text-zinc-100' : 'text-zinc-900'}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
@@ -576,10 +736,11 @@ export default function App() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`fixed inset-0 z-40 pt-24 px-6 md:hidden ${currentPage === 'home' ? 'bg-zinc-950 text-white' : 'bg-white text-zinc-900'}`}
+          className={`fixed inset-0 z-40 pt-24 px-6 md:hidden ${isDarkPage ? 'bg-zinc-950 text-white' : 'bg-white text-zinc-900'}`}
         >
           <div className="flex flex-col gap-6 text-xl">
             <button onClick={() => { setCurrentPage("home"); setIsMenuOpen(false); }} className="text-left font-medium">Home</button>
+            <button onClick={() => { setCurrentPage("software"); setIsMenuOpen(false); }} className="text-left font-medium">Softwares</button>
             <button onClick={() => { setCurrentPage("tools"); setIsMenuOpen(false); }} className="text-left font-medium">Soluções</button>
             <button className="w-full py-4 bg-lime-400 text-zinc-950 rounded-xl font-bold mt-4">
               Começar Agora
@@ -590,6 +751,8 @@ export default function App() {
 
       {currentPage === "tools" ? (
         <TimesProTools onNavigate={setCurrentPage} />
+      ) : currentPage === "software" ? (
+        <SoftwarePage onNavigate={setCurrentPage} />
       ) : (
         <>
           {/* Hero Section */}
@@ -1025,10 +1188,10 @@ export default function App() {
           </div>
           <div>
             <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-zinc-300">Produto</h4>
-            <ul className="space-y-4 text-zinc-500 text-sm">
-              <li><a href="#" className="hover:text-lime-400 transition-colors">Funcionalidades</a></li>
-              <li><a href="#" className="hover:text-lime-400 transition-colors">Painel ADM</a></li>
-              <li><a href="#" className="hover:text-lime-400 transition-colors">Personalização</a></li>
+            <ul className="space-y-4 text-zinc-500 text-sm flex flex-col items-start">
+              <li><button onClick={() => setCurrentPage("software")} className="hover:text-lime-400 transition-colors text-left">Softwares</button></li>
+              <li><button onClick={() => setCurrentPage("tools")} className="hover:text-lime-400 transition-colors text-left">Soluções</button></li>
+              <li><button onClick={() => setCurrentPage("software")} className="hover:text-lime-400 transition-colors text-left">Personalização</button></li>
             </ul>
           </div>
           <div>
