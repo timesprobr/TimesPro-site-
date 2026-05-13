@@ -12,6 +12,7 @@ import {
   Megaphone,
   UserCog,
   ChevronRight,
+  ChevronLeft,
   Trophy,
   Layout,
   Smartphone,
@@ -246,7 +247,7 @@ function TimesProTools({ onNavigate }: { onNavigate: (page: string) => void }) {
 
               {/* Categories Carousel */}
               <div className="relative group">
-                <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 scrollbar-none no-scrollbar">
+                <div id="solutions-slider" className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 pt-2 px-2 scrollbar-none no-scrollbar">
                   {categorySolutions.map((category, catIdx) => (
                     <motion.div
                       key={catIdx}
@@ -285,15 +286,182 @@ function TimesProTools({ onNavigate }: { onNavigate: (page: string) => void }) {
                   ))}
                 </div>
 
-                {/* Carousel Instruction */}
-                <div className="flex items-center gap-2 text-zinc-400 text-xs font-bold uppercase tracking-widest mt-2 px-2">
-                  <span className="w-8 h-[1px] bg-zinc-200" /> Deslize para ver mais categorias
+                {/* Seta Flutuante Esquerda abraçando o card < */}
+                <button 
+                  onClick={() => {
+                    const slider = document.getElementById("solutions-slider");
+                    if (slider) slider.scrollBy({ left: -450, behavior: "smooth" });
+                  }}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 lg:-translate-x-5 z-20 w-12 h-12 rounded-full bg-zinc-900 border-2 border-white text-lime-400 flex items-center justify-center hover:bg-lime-400 hover:text-zinc-950 hover:border-lime-400 transition-all shadow-2xl active:scale-95"
+                  aria-label="Rolar para a esquerda"
+                >
+                  <ChevronLeft className="w-6 h-6 stroke-[3]" />
+                </button>
+
+                {/* Seta Flutuante Direita abraçando o card > */}
+                <button 
+                  onClick={() => {
+                    const slider = document.getElementById("solutions-slider");
+                    if (slider) slider.scrollBy({ left: 450, behavior: "smooth" });
+                  }}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 lg:translate-x-5 z-20 w-12 h-12 rounded-full bg-zinc-900 border-2 border-white text-lime-400 flex items-center justify-center hover:bg-lime-400 hover:text-zinc-950 hover:border-lime-400 transition-all shadow-2xl active:scale-95"
+                  aria-label="Rolar para a direita"
+                >
+                  <ChevronRight className="w-6 h-6 stroke-[3]" />
+                </button>
+
+                {/* Carousel Instruction centralizada na base */}
+                <div className="flex items-center justify-center mt-2 px-2 text-zinc-400 text-xs font-bold uppercase tracking-widest">
+                  <span className="w-8 h-[1px] bg-zinc-200 hidden sm:block mr-2" /> Deslize ou use as setas para ver mais soluções
                 </div>
               </div>
 
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* Seção Exclusiva: Assessoria de Captação & Marketing Estratégico (Jogadas de Mestre) */}
+      <section className="bg-white py-24 border-t border-zinc-200 overflow-hidden relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-5">
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-lime-500 rounded-full blur-[140px]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          {/* Cabeçalho da Seção */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center mb-20"
+          >
+            <span className="inline-block text-lime-600 font-black uppercase tracking-[0.3em] text-xs mb-4 px-4 py-1.5 bg-lime-400/10 rounded-full border border-lime-400/20">
+              JOGADAS DE MESTRE
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight text-zinc-900 leading-tight">
+              Vestimos a sua camisa para buscar <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-lime-600 to-emerald-600">recursos e autoridade.</span>
+            </h2>
+            <p className="text-lg text-zinc-600 leading-relaxed font-light">
+              Nossa parceria vai muito além das telas do sistema. Colocamos a mão na massa ao seu lado para estruturar duas das frentes mais vitais para a sobrevivência e glória do clube.
+            </p>
+          </motion.div>
+
+          {/* Grid dos Dois Grandes Pilares */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch mb-16">
+            
+            {/* Pilar 1: Assessoria de Captação */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="rounded-[40px] bg-zinc-950 text-white p-10 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-xl border border-zinc-800 group hover:border-lime-500/30 transition-all"
+            >
+              <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-lime-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-lime-500/20 transition-all duration-700" />
+              
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="w-14 h-14 rounded-2xl bg-lime-400 text-zinc-950 flex items-center justify-center font-black shadow-lg transform group-hover:scale-110 transition-transform">
+                    <HandCoins className="w-7 h-7" />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-lime-400 bg-lime-400/10 px-3 py-1 rounded-full border border-lime-400/20">
+                    Captação Ativa
+                  </span>
+                </div>
+
+                <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-4 text-white">
+                  Assessoria Especializada em <br />
+                  <span className="text-lime-400">Captação de Recursos</span>
+                </h3>
+                
+                <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-light mb-8">
+                  Nós literalmente vestimos a camisa do seu clube. Atuamos lado a lado na elaboração técnica de projetos esportivos, formatação para leis de incentivo e captação ativa de recursos para buscar investimentos privados e destravar verbas públicas fundamentais para a sua estrutura.
+                </p>
+              </div>
+
+              <div className="space-y-3 pt-6 border-t border-white/10">
+                <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
+                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
+                  <span>Elaboração técnica de projetos esportivos</span>
+                </div>
+                <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
+                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
+                  <span>Formatação para leis de incentivo e editais</span>
+                </div>
+                <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
+                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
+                  <span>Estratégia prática de atração de verbas</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Pilar 2: Marketing Estratégico */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="rounded-[40px] bg-zinc-900 text-white p-10 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-xl border border-zinc-800 group hover:border-lime-500/30 transition-all"
+            >
+              <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-lime-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-lime-500/20 transition-all duration-700" />
+              
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="w-14 h-14 rounded-2xl bg-white text-zinc-950 flex items-center justify-center font-black shadow-lg transform group-hover:scale-110 transition-transform">
+                    <Megaphone className="w-7 h-7 text-lime-600" />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-zinc-400 bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                    Presença & Imagem
+                  </span>
+                </div>
+
+                <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-4 text-white">
+                  Implementação de <br />
+                  <span className="text-white">Marketing Estratégico</span>
+                </h3>
+                
+                <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-light mb-8">
+                  A paixão da sua torcida merece uma vitrine de elite. Desenvolvemos a autoridade e a imagem do clube através de portais oficiais de notícias, réguas de engajamento contínuo e posicionamento estratégico com um único objetivo: blindar a imagem institucional e atrair patrocinadores master de peso.
+                </p>
+              </div>
+
+              <div className="space-y-3 pt-6 border-t border-white/10">
+                <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
+                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
+                  <span>Fortalecimento da marca institucional</span>
+                </div>
+                <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
+                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
+                  <span>Criação de autoridade para atrair patrocinadores</span>
+                </div>
+                <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
+                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
+                  <span>Engajamento real e contínuo com a torcida</span>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+
+          {/* Rodapé da Seção (Fechamento) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="text-center bg-[#f8f9fa] border border-zinc-200/80 rounded-3xl p-8 max-w-4xl mx-auto shadow-sm"
+          >
+            <div className="flex items-center justify-center gap-2 text-lime-600 mb-2">
+              <Trophy className="w-5 h-5" />
+            </div>
+            <p className="text-base md:text-lg font-bold text-zinc-800 tracking-tight">
+              Estas são apenas duas das nossas jogadas ensaiadas para tornar o seu time campeão.
+            </p>
+            <p className="text-xs md:text-sm text-zinc-500 mt-1 font-light">
+              Unimos tecnologia de ponta e força operacional humana para mudar a história do seu projeto.
+            </p>
+          </motion.div>
         </div>
       </section>
     </div>
@@ -373,9 +541,7 @@ export default function App() {
 
           <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${currentPage === 'home' ? 'text-zinc-400' : 'text-zinc-500'}`}>
             <button onClick={() => setCurrentPage("home")} className={`hover:text-lime-400 transition-colors ${currentPage === 'home' ? 'text-lime-400' : ''}`}>Home</button>
-            <button onClick={() => setCurrentPage("tools")} className={`hover:text-lime-400 transition-colors ${currentPage === 'tools' ? 'text-lime-400' : ''}`}>TimesPro Tools</button>
-            <a href="#features" className="hover:text-lime-400 transition-colors">Funcionalidades</a>
-            <a href="#dashboard" className="hover:text-lime-400 transition-colors">Painel ADM</a>
+            <button onClick={() => setCurrentPage("tools")} className={`hover:text-lime-400 transition-colors ${currentPage === 'tools' ? 'text-lime-400' : ''}`}>Soluções</button>
             <button className="px-5 py-2 bg-lime-400 text-zinc-950 rounded-full font-bold hover:bg-lime-300 transition-all transform hover:scale-105">
               Começar Agora
             </button>
@@ -395,11 +561,9 @@ export default function App() {
           className={`fixed inset-0 z-40 pt-24 px-6 md:hidden ${currentPage === 'home' ? 'bg-zinc-950 text-white' : 'bg-white text-zinc-900'}`}
         >
           <div className="flex flex-col gap-6 text-xl">
-            <button onClick={() => { setCurrentPage("home"); setIsMenuOpen(false); }}>Home</button>
-            <button onClick={() => { setCurrentPage("tools"); setIsMenuOpen(false); }}>TimesPro Tools</button>
-            <a href="#features" onClick={() => setIsMenuOpen(false)}>Funcionalidades</a>
-            <a href="#dashboard" onClick={() => setIsMenuOpen(false)}>Painel ADM</a>
-            <button className="w-full py-4 bg-lime-400 text-zinc-950 rounded-xl font-bold">
+            <button onClick={() => { setCurrentPage("home"); setIsMenuOpen(false); }} className="text-left font-medium">Home</button>
+            <button onClick={() => { setCurrentPage("tools"); setIsMenuOpen(false); }} className="text-left font-medium">Soluções</button>
+            <button className="w-full py-4 bg-lime-400 text-zinc-950 rounded-xl font-bold mt-4">
               Começar Agora
             </button>
           </div>
@@ -779,8 +943,8 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Imagem Central da Dupla (Gigantismo 3D Pop-out Supremo) */}
-                <div className="lg:col-span-4 flex justify-center order-1 lg:order-2 relative group pt-8 lg:pt-0 -mb-8 md:-mb-12 z-10">
+                {/* Imagem Central da Dupla com o CTA Integrado no Vão Central */}
+                <div className="lg:col-span-4 flex flex-col items-center justify-end order-1 lg:order-2 relative group pt-8 lg:pt-0 z-10">
                   {/* Pódio / Aura Verde de Fundo */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-gradient-to-b from-lime-400/25 to-transparent blur-2xl pointer-events-none group-hover:from-lime-400/35 transition-all duration-500" />
                   
@@ -795,6 +959,14 @@ export default function App() {
                         WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 95%)" 
                       }}
                     />
+                  </div>
+
+                  {/* Botão de Agendamento Encaixado no Vão Central */}
+                  <div className="relative z-30 -mt-16 md:-mt-20 mb-2 w-full max-w-[240px]">
+                    <button className="w-full py-3 px-4 bg-lime-400 text-zinc-950 rounded-xl font-bold text-xs hover:bg-lime-300 shadow-[0_10px_20px_rgba(163,230,53,0.3)] hover:scale-105 transition-all inline-flex items-center justify-center gap-2">
+                      <MessageCircle className="w-3.5 h-3.5 fill-zinc-950 text-zinc-950" />
+                      Agendar Reunião com Fundadores
+                    </button>
                   </div>
                 </div>
 
@@ -812,14 +984,6 @@ export default function App() {
                     <CheckCircle2 className="w-4 h-4 text-lime-400 order-1 lg:order-2" /> 
                     <span className="order-2 lg:order-1">Operação e Engajamento Real</span>
                   </div>
-                </div>
-
-                {/* Botão de Agendamento Interno */}
-                <div className="lg:col-span-12 flex justify-center pt-8 border-t border-white/5 mt-4 order-4 relative z-20">
-                  <button className="px-7 py-4 bg-lime-400 text-zinc-950 rounded-xl font-bold text-sm hover:bg-lime-300 shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)] hover:scale-105 transition-all inline-flex items-center gap-2.5">
-                    <MessageCircle className="w-4 h-4 fill-zinc-950 text-zinc-950" />
-                    Agendar Reunião com os Fundadores
-                  </button>
                 </div>
 
               </div>
