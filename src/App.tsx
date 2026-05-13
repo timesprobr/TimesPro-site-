@@ -50,6 +50,7 @@ import badgeMaio from "../imagens/3 de Maio Futebol Clube.png";
 import dash01Img from "../imagens/dash 01.png";
 import dashScoutImg from "../imagens/dash scout.png";
 import timesImg from "../imagens/especialsta c fundo-Photoroom.png";
+import strategyImg from "../imagens/estrategia png.png";
 
 function TimesProTools({ onNavigate }: { onNavigate: (page: string) => void }) {
   const toolsCards = [
@@ -213,6 +214,164 @@ function TimesProTools({ onNavigate }: { onNavigate: (page: string) => void }) {
         </div>
       </section>
 
+      {/* Seção Exclusiva: Assessoria de Captação & Marketing Estratégico (Jogadas de Mestre) */}
+      <section className="bg-white py-12 border-t border-zinc-200 overflow-hidden relative">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          {/* Cabeçalho da Seção Compacto */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-2xl mx-auto text-center mb-10"
+          >
+            <span className="inline-block text-lime-600 font-black uppercase tracking-[0.2em] text-[10px] mb-3 px-3 py-1 bg-lime-400/10 rounded-full border border-lime-400/20">
+              JOGADAS DE MESTRE
+            </span>
+            <h2 className="text-2xl md:text-4xl font-black mb-3 tracking-tight text-zinc-900 leading-tight">
+              Vestimos a sua camisa para buscar <br />
+              <span className="text-lime-500">recursos e autoridade.</span>
+            </h2>
+            <p className="text-sm md:text-base text-zinc-600 leading-relaxed font-light">
+              Atuamos lado a lado na operação prática para destravar investimentos e construir o prestígio que o seu clube merece.
+            </p>
+          </motion.div>
+
+          {/* Grid de 3 Colunas: [Captação] [Foto Especialista] [Marketing] */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch mb-10">
+            
+            {/* Pilar 1: Assessoria de Captação */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="rounded-[30px] bg-zinc-950 text-white p-6 relative overflow-hidden flex flex-col justify-between shadow-lg border border-zinc-800 group hover:border-lime-500/30 transition-all"
+            >
+              <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 w-32 h-32 bg-lime-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-lime-500/20 transition-all duration-700" />
+              
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-9 h-9 rounded-xl bg-lime-400 text-zinc-950 flex items-center justify-center font-black shadow-md transform group-hover:scale-110 transition-transform">
+                    <HandCoins className="w-4 h-4" />
+                  </div>
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-lime-400 bg-lime-400/10 px-2 py-0.5 rounded-full border border-lime-400/20">
+                    Captação Ativa
+                  </span>
+                </div>
+
+                <h3 className="text-lg md:text-xl font-black tracking-tight mb-2 text-white">
+                  Assessoria em <br /><span className="text-lime-400 font-black">Captação de Recursos</span>
+                </h3>
+                
+                <p className="text-zinc-400 text-xs leading-relaxed font-light mb-5">
+                  Elaboramos projetos esportivos técnicos e formatamos propostas para leis de incentivo. Realizamos a busca ativa por verbas públicas e patrocínios privados para financiar a sua estrutura.
+                </p>
+              </div>
+
+              <div className="space-y-2 pt-3 border-t border-white/10">
+                <div className="flex items-center gap-2 text-[11px] text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-lime-400 shrink-0" />
+                  <span>Projetos técnicos prontos</span>
+                </div>
+                <div className="flex items-center gap-2 text-[11px] text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-lime-400 shrink-0" />
+                  <span>Leis de incentivo esportivo</span>
+                </div>
+                <div className="flex items-center gap-2 text-[11px] text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-lime-400 shrink-0" />
+                  <span>Captação ativa de verbas</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Coluna Central: Imagem Estratégica em Escala Monumental transbordando os cards */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center justify-center relative py-6 lg:py-0 z-30"
+            >
+              {/* Aura resplandecente traseira acendendo a estratégia */}
+              <div className="absolute w-56 h-56 bg-lime-500/15 rounded-full blur-3xl pointer-events-none" />
+              
+              <img 
+                src={strategyImg} 
+                alt="Estratégia de Elite TimesPro" 
+                className="w-full max-w-[260px] md:max-w-[320px] lg:max-w-[380px] object-contain relative z-20 drop-shadow-2xl transform lg:scale-[1.35] hover:scale-[1.4] transition-all duration-700"
+                style={{ 
+                  maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)", 
+                  WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)" 
+                }}
+              />
+
+              <div className="mt-6 lg:mt-12 px-3.5 py-1.5 bg-zinc-950 text-lime-400 rounded-full text-[10px] font-black tracking-widest uppercase shadow-xl border border-lime-400/30 flex items-center gap-1.5 relative z-20">
+                <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
+                <span>Plano Tático Vencedor</span>
+              </div>
+            </motion.div>
+
+            {/* Pilar 2: Marketing Estratégico */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="rounded-[30px] bg-zinc-900 text-white p-6 relative overflow-hidden flex flex-col justify-between shadow-lg border border-zinc-800 group hover:border-lime-500/30 transition-all"
+            >
+              <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 w-32 h-32 bg-lime-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-lime-500/20 transition-all duration-700" />
+              
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-9 h-9 rounded-xl bg-white text-zinc-950 flex items-center justify-center font-black shadow-md transform group-hover:scale-110 transition-transform">
+                    <Megaphone className="w-4 h-4 text-lime-600" />
+                  </div>
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full border border-white/10">
+                    Imagem & Marca
+                  </span>
+                </div>
+
+                <h3 className="text-lg md:text-xl font-black tracking-tight mb-2 text-white">
+                  Implementação de <br /><span className="text-white font-black">Marketing Estratégico</span>
+                </h3>
+                
+                <p className="text-zinc-400 text-xs leading-relaxed font-light mb-5">
+                  Criamos portais de notícias oficiais e padronizamos a comunicação visual do clube. Fortalecemos o engajamento com a torcida para transformar a sua camisa em um ímã de marcas parceiras.
+                </p>
+              </div>
+
+              <div className="space-y-2 pt-3 border-t border-white/10">
+                <div className="flex items-center gap-2 text-[11px] text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-lime-400 shrink-0" />
+                  <span>Identidade visual de ponta</span>
+                </div>
+                <div className="flex items-center gap-2 text-[11px] text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-lime-400 shrink-0" />
+                  <span>Portal oficial ativo</span>
+                </div>
+                <div className="flex items-center gap-2 text-[11px] text-zinc-300">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-lime-400 shrink-0" />
+                  <span>Engajamento de parceiros</span>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+
+          {/* Rodapé da Seção Compacto */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="text-center bg-[#f8f9fa] border border-zinc-200/80 rounded-2xl p-4 max-w-3xl mx-auto shadow-sm flex flex-col sm:flex-row items-center justify-center gap-2.5"
+          >
+            <Trophy className="w-4 h-4 text-lime-600 shrink-0" />
+            <p className="text-xs md:text-sm font-bold text-zinc-800 tracking-tight text-center sm:text-left">
+              Estas são apenas duas das nossas jogadas ensaiadas para tornar o seu time campeão.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Solutions Section - Redesigned Sticky Layout */}
       <section className="bg-[#f7f7f7] py-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
@@ -322,148 +481,7 @@ function TimesProTools({ onNavigate }: { onNavigate: (page: string) => void }) {
         </div>
       </section>
 
-      {/* Seção Exclusiva: Assessoria de Captação & Marketing Estratégico (Jogadas de Mestre) */}
-      <section className="bg-white py-24 border-t border-zinc-200 overflow-hidden relative">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-5">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-lime-500 rounded-full blur-[140px]" />
-        </div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          {/* Cabeçalho da Seção */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center mb-20"
-          >
-            <span className="inline-block text-lime-600 font-black uppercase tracking-[0.3em] text-xs mb-4 px-4 py-1.5 bg-lime-400/10 rounded-full border border-lime-400/20">
-              JOGADAS DE MESTRE
-            </span>
-            <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tight text-zinc-900 leading-tight">
-              Vestimos a sua camisa para buscar <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-lime-600 to-emerald-600">recursos e autoridade.</span>
-            </h2>
-            <p className="text-lg text-zinc-600 leading-relaxed font-light">
-              Nossa parceria vai muito além das telas do sistema. Colocamos a mão na massa ao seu lado para estruturar duas das frentes mais vitais para a sobrevivência e glória do clube.
-            </p>
-          </motion.div>
-
-          {/* Grid dos Dois Grandes Pilares */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch mb-16">
-            
-            {/* Pilar 1: Assessoria de Captação */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="rounded-[40px] bg-zinc-950 text-white p-10 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-xl border border-zinc-800 group hover:border-lime-500/30 transition-all"
-            >
-              <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-lime-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-lime-500/20 transition-all duration-700" />
-              
-              <div>
-                <div className="flex items-center justify-between mb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-lime-400 text-zinc-950 flex items-center justify-center font-black shadow-lg transform group-hover:scale-110 transition-transform">
-                    <HandCoins className="w-7 h-7" />
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-lime-400 bg-lime-400/10 px-3 py-1 rounded-full border border-lime-400/20">
-                    Captação Ativa
-                  </span>
-                </div>
-
-                <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-4 text-white">
-                  Assessoria Especializada em <br />
-                  <span className="text-lime-400">Captação de Recursos</span>
-                </h3>
-                
-                <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-light mb-8">
-                  Nós literalmente vestimos a camisa do seu clube. Atuamos lado a lado na elaboração técnica de projetos esportivos, formatação para leis de incentivo e captação ativa de recursos para buscar investimentos privados e destravar verbas públicas fundamentais para a sua estrutura.
-                </p>
-              </div>
-
-              <div className="space-y-3 pt-6 border-t border-white/10">
-                <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
-                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
-                  <span>Elaboração técnica de projetos esportivos</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
-                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
-                  <span>Formatação para leis de incentivo e editais</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
-                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
-                  <span>Estratégia prática de atração de verbas</span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Pilar 2: Marketing Estratégico */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="rounded-[40px] bg-zinc-900 text-white p-10 md:p-12 relative overflow-hidden flex flex-col justify-between shadow-xl border border-zinc-800 group hover:border-lime-500/30 transition-all"
-            >
-              <div className="absolute right-0 top-0 translate-x-8 -translate-y-8 w-64 h-64 bg-lime-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-lime-500/20 transition-all duration-700" />
-              
-              <div>
-                <div className="flex items-center justify-between mb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-white text-zinc-950 flex items-center justify-center font-black shadow-lg transform group-hover:scale-110 transition-transform">
-                    <Megaphone className="w-7 h-7 text-lime-600" />
-                  </div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-zinc-400 bg-white/5 px-3 py-1 rounded-full border border-white/10">
-                    Presença & Imagem
-                  </span>
-                </div>
-
-                <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-4 text-white">
-                  Implementação de <br />
-                  <span className="text-white">Marketing Estratégico</span>
-                </h3>
-                
-                <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-light mb-8">
-                  A paixão da sua torcida merece uma vitrine de elite. Desenvolvemos a autoridade e a imagem do clube através de portais oficiais de notícias, réguas de engajamento contínuo e posicionamento estratégico com um único objetivo: blindar a imagem institucional e atrair patrocinadores master de peso.
-                </p>
-              </div>
-
-              <div className="space-y-3 pt-6 border-t border-white/10">
-                <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
-                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
-                  <span>Fortalecimento da marca institucional</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
-                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
-                  <span>Criação de autoridade para atrair patrocinadores</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
-                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
-                  <span>Engajamento real e contínuo com a torcida</span>
-                </div>
-              </div>
-            </motion.div>
-
-          </div>
-
-          {/* Rodapé da Seção (Fechamento) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="text-center bg-[#f8f9fa] border border-zinc-200/80 rounded-3xl p-8 max-w-4xl mx-auto shadow-sm"
-          >
-            <div className="flex items-center justify-center gap-2 text-lime-600 mb-2">
-              <Trophy className="w-5 h-5" />
-            </div>
-            <p className="text-base md:text-lg font-bold text-zinc-800 tracking-tight">
-              Estas são apenas duas das nossas jogadas ensaiadas para tornar o seu time campeão.
-            </p>
-            <p className="text-xs md:text-sm text-zinc-500 mt-1 font-light">
-              Unimos tecnologia de ponta e força operacional humana para mudar a história do seu projeto.
-            </p>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }
