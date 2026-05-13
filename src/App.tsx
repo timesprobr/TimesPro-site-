@@ -51,6 +51,8 @@ import dash01Img from "../imagens/dash 01.png";
 import dashScoutImg from "../imagens/dash scout.png";
 import timesImg from "../imagens/especialsta c fundo-Photoroom.png";
 import strategyImg from "../imagens/estrategia png.png";
+import dashCrmImg from "../imagens/dash crm.png";
+import dashCrmLightImg from "../imagens/dash crm ligth.png";
 
 function TimesProTools({ onNavigate }: { onNavigate: (page: string) => void }) {
   const toolsCards = [
@@ -487,6 +489,8 @@ function TimesProTools({ onNavigate }: { onNavigate: (page: string) => void }) {
 }
 
 function SoftwarePage({ onNavigate }: { onNavigate: (page: string) => void }) {
+  const [isLightMode, setIsLightMode] = useState(false);
+
   const softwares = [
     {
       title: "TimesPro CRM",
@@ -495,6 +499,8 @@ function SoftwarePage({ onNavigate }: { onNavigate: (page: string) => void }) {
       icon: PieChart,
       accent: "text-lime-400",
       bgAccent: "bg-lime-400/10 border-lime-400/20",
+      image: dashCrmImg,
+      reverse: false,
       features: [
         "Gestão financeira e prestação de contas",
         "Controle de mensalidades e repasses",
@@ -509,6 +515,8 @@ function SoftwarePage({ onNavigate }: { onNavigate: (page: string) => void }) {
       icon: Layout,
       accent: "text-white",
       bgAccent: "bg-white/5 border-white/10",
+      image: toolsImg,
+      reverse: true,
       features: [
         "Construtor visual sem necessidade de código",
         "Portal oficial de notícias e resultados",
@@ -523,6 +531,8 @@ function SoftwarePage({ onNavigate }: { onNavigate: (page: string) => void }) {
       icon: Smartphone,
       accent: "text-lime-500",
       bgAccent: "bg-lime-500/10 border-lime-500/20",
+      image: dashScoutImg,
+      reverse: false,
       features: [
         "Identidade 100% customizada com escudo e cores",
         "Engajamento contínuo da torcida em um só lugar",
@@ -555,59 +565,114 @@ function SoftwarePage({ onNavigate }: { onNavigate: (page: string) => void }) {
         </p>
       </motion.div>
 
-      {/* Grid das 3 Soluções */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+      {/* Lista Horizontal Alternada (Z-Pattern) */}
+      <div className="flex flex-col gap-16 lg:gap-24 relative z-10">
         {softwares.map((sw, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: idx * 0.15 }}
-            className="rounded-[32px] bg-zinc-900 border border-zinc-800 p-8 flex flex-col justify-between shadow-xl relative overflow-hidden group hover:border-zinc-700 transition-all duration-500"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.7 }}
+            className="rounded-[40px] bg-zinc-900/60 backdrop-blur-xl border border-zinc-800/80 p-8 lg:p-12 shadow-2xl relative overflow-hidden group hover:border-zinc-700/80 transition-all duration-500"
           >
-            {/* Efeito de iluminação suave no hover */}
-            <div className="absolute -right-12 -top-12 w-32 h-32 bg-lime-400/5 rounded-full blur-2xl group-hover:bg-lime-400/10 transition-all duration-500 pointer-events-none" />
+            {/* Aura de fundo suave no canto */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-lime-500/5 rounded-full blur-3xl pointer-events-none group-hover:bg-lime-500/10 transition-all duration-700" />
 
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black ${sw.bgAccent} border`}>
-                  <sw.icon className={`w-6 h-6 ${sw.accent}`} strokeWidth={2.5} />
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center relative z-10">
+              
+              {/* Coluna da Imagem */}
+              <div className={`lg:col-span-6 order-1 ${sw.reverse ? 'lg:order-2' : 'lg:order-1'}`}>
+                <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-zinc-950 p-2 shadow-2xl group-hover:scale-[1.02] transition-all duration-500">
+                  
+                  {/* Toggle Exclusivo Integrado à Janela de Demonstração do CRM */}
+                  {idx === 0 && (
+                    <div className="flex items-center justify-between px-4 py-2.5 bg-zinc-900 border-b border-white/5 rounded-t-2xl">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-green-500/80 inline-block" />
+                      </div>
+                      
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] text-zinc-400 font-bold tracking-wider uppercase">
+                          Tema da Tela:
+                        </span>
+                        <button 
+                          onClick={() => setIsLightMode(!isLightMode)}
+                          className="w-10 h-5 bg-zinc-950 rounded-full p-0.5 border border-zinc-800 flex items-center transition-all cursor-pointer"
+                          aria-label="Alternar modo claro ou escuro na interface do CRM"
+                        >
+                          <div className={`w-4 h-4 rounded-full flex items-center justify-center text-[8px] transform transition-transform duration-300 ${isLightMode ? 'translate-x-5 bg-white text-zinc-900' : 'translate-x-0 bg-lime-400 text-zinc-950'}`}>
+                            {isLightMode ? '☀️' : '🌙'}
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="absolute inset-0 bg-gradient-to-tr from-lime-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  
+                  <img 
+                    src={idx === 0 ? (isLightMode ? dashCrmLightImg : dashCrmImg) : sw.image} 
+                    alt={sw.title} 
+                    className={`w-full h-auto max-h-[340px] lg:max-h-[380px] object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] transition-all duration-500 ${idx === 0 ? 'rounded-b-2xl rounded-t-none mt-1' : 'rounded-2xl'}`}
+                  />
+                  
+                  {/* Badge numérico sutil no canto do mockup */}
+                  <div className="absolute bottom-4 left-4 bg-zinc-900/90 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full text-[9px] font-black text-lime-400 tracking-widest uppercase">
+                    Módulo 0{idx + 1}
+                  </div>
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-widest text-zinc-500">
-                  Módulo 0{idx + 1}
-                </span>
               </div>
 
-              <h3 className="text-2xl font-black text-white tracking-tight mb-1">
-                {sw.title}
-              </h3>
-              <p className="text-xs font-bold text-lime-400 uppercase tracking-wider mb-4">
-                {sw.subtitle}
-              </p>
+              {/* Coluna do Conteúdo */}
+              <div className={`lg:col-span-6 flex flex-col justify-between order-2 ${sw.reverse ? 'lg:order-1 text-left' : 'lg:order-2 text-left'}`}>
+                <div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black ${sw.bgAccent} border shadow-inner shrink-0`}>
+                      <sw.icon className={`w-6 h-6 ${sw.accent}`} strokeWidth={2.5} />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 block">
+                        Solução Exclusiva
+                      </span>
+                      <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight">
+                        {sw.title}
+                      </h3>
+                    </div>
+                  </div>
 
-              <p className="text-zinc-400 text-sm leading-relaxed font-light mb-8">
-                {sw.description}
-              </p>
-            </div>
+                  <p className="text-xs font-bold text-lime-400 uppercase tracking-wider mb-4 inline-block bg-lime-400/10 px-3 py-1 rounded-full border border-lime-400/20">
+                    {sw.subtitle}
+                  </p>
 
-            <div className="space-y-3 pt-6 border-t border-zinc-800/80">
-              {sw.features.map((feat, fIdx) => (
-                <div key={fIdx} className="flex items-start gap-3 text-xs text-zinc-300">
-                  <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0 mt-0.5" />
-                  <span>{feat}</span>
+                  <p className="text-zinc-400 text-sm md:text-base leading-relaxed font-light mb-6">
+                    {sw.description}
+                  </p>
                 </div>
-              ))}
-            </div>
 
-            {/* CTA Inferior Integrado no Card */}
-            <div className="mt-8 pt-4">
-              <button 
-                onClick={() => onNavigate("tools")}
-                className="w-full py-3 bg-zinc-950 text-zinc-300 hover:text-white rounded-xl font-bold text-xs border border-zinc-800 hover:border-lime-500/30 transition-all inline-flex items-center justify-center gap-2 group/btn"
-              >
-                <span>Ver recursos operacionais</span>
-                <ChevronRight className="w-3.5 h-3.5 text-lime-400 group-hover/btn:translate-x-1 transition-transform" />
-              </button>
+                <div className="space-y-2.5 pt-6 border-t border-zinc-800">
+                  {sw.features.map((feat, fIdx) => (
+                    <div key={fIdx} className="flex items-center gap-3 text-xs md:text-sm text-zinc-300">
+                      <CheckCircle2 className="w-4 h-4 text-lime-400 shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-8 pt-2">
+                  <button 
+                    onClick={() => onNavigate("tools")}
+                    className="px-6 py-3 bg-zinc-950 hover:bg-lime-400 text-zinc-300 hover:text-zinc-950 rounded-xl font-bold text-xs uppercase tracking-wider border border-zinc-800 hover:border-lime-400 transition-all inline-flex items-center gap-2 group/btn shadow-lg"
+                  >
+                    <span>Conhecer funcionalidade</span>
+                    <ChevronRight className="w-4 h-4 text-lime-400 group-hover/btn:text-zinc-950 group-hover/btn:translate-x-1 transition-all" />
+                  </button>
+                </div>
+
+              </div>
+
             </div>
           </motion.div>
         ))}
