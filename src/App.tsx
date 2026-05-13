@@ -814,14 +814,14 @@ export default function App() {
                   </div>
                 </div>
 
-              </div>
+                {/* Botão de Agendamento Interno */}
+                <div className="lg:col-span-12 flex justify-center pt-8 border-t border-white/5 mt-4 order-4 relative z-20">
+                  <button className="px-7 py-4 bg-lime-400 text-zinc-950 rounded-xl font-bold text-sm hover:bg-lime-300 shadow-[0_0_20px_-5px_rgba(163,230,53,0.4)] hover:scale-105 transition-all inline-flex items-center gap-2.5">
+                    <MessageCircle className="w-4 h-4 fill-zinc-950 text-zinc-950" />
+                    Agendar Reunião com os Fundadores
+                  </button>
+                </div>
 
-              {/* Botão de Agendamento */}
-              <div className="mt-16 text-center">
-                <button className="px-10 py-5 bg-lime-400 text-zinc-950 rounded-2xl font-black text-lg hover:bg-lime-300 shadow-[0_0_30px_-5px_rgba(163,230,53,0.5)] hover:scale-105 transition-all inline-flex items-center gap-3 group">
-                  <MessageCircle className="w-6 h-6 fill-zinc-950 text-zinc-950" />
-                  Agendar Reunião com os Fundadores
-                </button>
               </div>
 
             </div>
