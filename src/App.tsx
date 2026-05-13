@@ -789,7 +789,11 @@ export default function App() {
                     <img 
                       src={timesImg} 
                       alt="Savio Faustino & Carlos Gabriel" 
-                      className="w-full h-auto object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.9)] transform origin-bottom scale-[1.40] md:scale-[1.45] -translate-y-20 group-hover:scale-[1.45] md:group-hover:scale-[1.50] group-hover:-translate-y-22 transition-all duration-500 filter contrast-[1.05]" 
+                      className="w-full h-auto object-contain transform origin-bottom scale-[1.40] md:scale-[1.45] -translate-y-20 group-hover:scale-[1.45] md:group-hover:scale-[1.50] group-hover:-translate-y-22 transition-all duration-500 filter contrast-[1.05]" 
+                      style={{ 
+                        maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 95%)", 
+                        WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 95%)" 
+                      }}
                     />
                   </div>
                 </div>
