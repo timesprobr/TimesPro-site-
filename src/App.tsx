@@ -53,6 +53,11 @@ import timesImg from "../imagens/especialsta c fundo-Photoroom.png";
 import strategyImg from "../imagens/estrategia png.png";
 import dashCrmImg from "../imagens/dash crm.png";
 import dashCrmLightImg from "../imagens/dash crm ligth.png";
+import brandIcon from "../imagens/icone 01.png";
+import brandLogoFull from "../imagens/2e6dbd64-4276-4347-bd93-78bb8fea9ebd.png";
+import logoTp from "../imagens/logo tp.png";
+import logoLight from "../imagens/image-Photoroom (1).png";
+import SoftwareCrmPage from "./pages/SoftwareCrmPage";
 
 function TimesProTools({ onNavigate }: { onNavigate: (page: string) => void }) {
   const toolsCards = [
@@ -663,11 +668,18 @@ function SoftwarePage({ onNavigate }: { onNavigate: (page: string) => void }) {
 
                 <div className="mt-8 pt-2">
                   <button 
-                    onClick={() => onNavigate("tools")}
-                    className="px-6 py-3 bg-zinc-950 hover:bg-lime-400 text-zinc-300 hover:text-zinc-950 rounded-xl font-bold text-xs uppercase tracking-wider border border-zinc-800 hover:border-lime-400 transition-all inline-flex items-center gap-2 group/btn shadow-lg"
+                    onClick={() => {
+                      if (idx === 0) onNavigate("crm");
+                      else onNavigate("tools");
+                    }}
+                    className={`px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all inline-flex items-center gap-2 group/btn shadow-lg ${
+                      idx === 0 
+                        ? "bg-lime-400 text-zinc-950 hover:bg-lime-300 shadow-lime-400/20 hover:scale-105" 
+                        : "bg-zinc-950 hover:bg-lime-400 text-zinc-300 hover:text-zinc-950 border border-zinc-800 hover:border-lime-400"
+                    }`}
                   >
-                    <span>Conhecer funcionalidade</span>
-                    <ChevronRight className="w-4 h-4 text-lime-400 group-hover/btn:text-zinc-950 group-hover/btn:translate-x-1 transition-all" />
+                    <span>{idx === 0 ? "Conhecer TimesPro CRM" : "Conhecer funcionalidade"}</span>
+                    <ChevronRight className={`w-4 h-4 group-hover/btn:translate-x-1 transition-all ${idx === 0 ? 'text-zinc-950 stroke-[3]' : 'text-lime-400 group-hover/btn:text-zinc-950'}`} />
                   </button>
                 </div>
 
@@ -774,11 +786,8 @@ export default function App() {
           }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <div className="flex items-center gap-2 cursor-pointer" onClick={() => setCurrentPage("home")}>
-            <div className="w-10 h-10 bg-lime-400 rounded-lg flex items-center justify-center">
-              <Trophy className="text-zinc-950 w-6 h-6" />
-            </div>
-            <span className={`text-2xl font-display font-bold tracking-tighter ${isDarkPage ? 'text-white' : 'text-zinc-900'}`}>TIMES PRO</span>
+          <div className="flex items-center cursor-pointer select-none" onClick={() => setCurrentPage("home")}>
+            <img src={isDarkPage ? logoTp : logoLight} alt="TimesPro" className="h-8 w-auto object-contain" />
           </div>
 
           <div className={`hidden md:flex items-center gap-8 text-sm font-medium ${isDarkPage ? 'text-zinc-400' : 'text-zinc-500'}`}>
@@ -818,6 +827,8 @@ export default function App() {
         <TimesProTools onNavigate={setCurrentPage} />
       ) : currentPage === "software" ? (
         <SoftwarePage onNavigate={setCurrentPage} />
+      ) : currentPage === "crm" ? (
+        <SoftwareCrmPage onNavigate={setCurrentPage} />
       ) : (
         <>
           {/* Hero Section */}
@@ -1240,41 +1251,40 @@ export default function App() {
       )}
 
       {/* Footer */}
-      <footer className="py-20 border-t border-white/5 px-6">
+      <footer className={`py-20 border-t px-6 transition-colors duration-300 ${isDarkPage ? 'border-white/5 bg-zinc-950' : 'border-zinc-200 bg-white'}`}>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <Trophy className="text-lime-400 w-8 h-8" />
-              <span className="text-2xl font-display font-bold tracking-tighter">TIMES PRO</span>
+            <div className="mb-6">
+              <img src={isDarkPage ? logoTp : logoLight} alt="TimesPro" className="h-8 w-auto object-contain" />
             </div>
-            <p className="text-zinc-500 max-w-xs leading-relaxed text-sm">
+            <p className={`max-w-xs leading-relaxed text-sm ${isDarkPage ? 'text-zinc-500' : 'text-zinc-600'}`}>
               Potencializando o futebol amador através da tecnologia. Gestão, transparência e profissionalismo no asfalto ou na terra.
             </p>
           </div>
           <div>
-            <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-zinc-300">Produto</h4>
-            <ul className="space-y-4 text-zinc-500 text-sm flex flex-col items-start">
-              <li><button onClick={() => setCurrentPage("software")} className="hover:text-lime-400 transition-colors text-left">Softwares</button></li>
-              <li><button onClick={() => setCurrentPage("tools")} className="hover:text-lime-400 transition-colors text-left">Soluções</button></li>
-              <li><button onClick={() => setCurrentPage("software")} className="hover:text-lime-400 transition-colors text-left">Personalização</button></li>
+            <h4 className={`font-bold mb-6 text-sm uppercase tracking-widest ${isDarkPage ? 'text-zinc-300' : 'text-zinc-900'}`}>Produto</h4>
+            <ul className={`space-y-4 text-sm flex flex-col items-start ${isDarkPage ? 'text-zinc-500' : 'text-zinc-600'}`}>
+              <li><button onClick={() => setCurrentPage("software")} className="hover:text-lime-500 transition-colors text-left">Softwares</button></li>
+              <li><button onClick={() => setCurrentPage("tools")} className="hover:text-lime-500 transition-colors text-left">Soluções</button></li>
+              <li><button onClick={() => setCurrentPage("software")} className="hover:text-lime-500 transition-colors text-left">Personalização</button></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold mb-6 text-sm uppercase tracking-widest text-zinc-300">Suporte</h4>
-            <ul className="space-y-4 text-zinc-500 text-sm">
-              <li><a href="#" className="hover:text-lime-400 transition-colors">Central de Ajuda</a></li>
-              <li><a href="#" className="hover:text-lime-400 transition-colors">Contato</a></li>
-              <li><a href="#" className="hover:text-lime-400 transition-colors">Termos de Uso</a></li>
-              <li><a href="#" className="hover:text-lime-400 transition-colors">Privacidade</a></li>
+            <h4 className={`font-bold mb-6 text-sm uppercase tracking-widest ${isDarkPage ? 'text-zinc-300' : 'text-zinc-900'}`}>Suporte</h4>
+            <ul className={`space-y-4 text-sm ${isDarkPage ? 'text-zinc-500' : 'text-zinc-600'}`}>
+              <li><a href="#" className="hover:text-lime-500 transition-colors">Central de Ajuda</a></li>
+              <li><a href="#" className="hover:text-lime-500 transition-colors">Contato</a></li>
+              <li><a href="#" className="hover:text-lime-500 transition-colors">Termos de Uso</a></li>
+              <li><a href="#" className="hover:text-lime-500 transition-colors">Privacidade</a></li>
             </ul>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-600 text-xs uppercase tracking-widest font-bold">
+        <div className={`max-w-7xl mx-auto mt-20 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-xs uppercase tracking-widest font-bold ${isDarkPage ? 'border-white/5 text-zinc-600' : 'border-zinc-200 text-zinc-400'}`}>
           <p>© 2026 TIMES PRO SaaS. Todos os direitos reservados.</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-lime-400">Instagram</a>
-            <a href="#" className="hover:text-lime-400">LinkedIn</a>
-            <a href="#" className="hover:text-lime-400">Twitter</a>
+            <a href="#" className="hover:text-lime-500">Instagram</a>
+            <a href="#" className="hover:text-lime-500">LinkedIn</a>
+            <a href="#" className="hover:text-lime-500">Twitter</a>
           </div>
         </div>
       </footer>
