@@ -23,6 +23,7 @@ import dashCrmLightImg from "../../imagens/dash crm ligth.png";
 export default function SoftwareCrmPage({ onNavigate }: { onNavigate: (page: string) => void }) {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [activeTab, setActiveTab] = useState<"light" | "dark">("light");
+  const [activeModuleIndex, setActiveModuleIndex] = useState(0);
 
   const problemas = [
     {
@@ -57,6 +58,89 @@ export default function SoftwareCrmPage({ onNavigate }: { onNavigate: (page: str
       author: "Marcos 'Tubarão' Silva",
       role: "Presidente Executivo",
       club: "Real Várzea F.C."
+    }
+  ];
+
+  const modulosFuncionalidades = [
+    {
+      titulo: "Finanças & Inteligência",
+      icone: DollarSign,
+      descricaoSecao: "Controle absoluto do fluxo de caixa e automação das cobranças.",
+      features: [
+        {
+          nome: "Dashboard Executivo",
+          descricao: "Análise de dados avançada com gráficos intuitivos, indicadores de adimplência e projeções financeiras em tempo real."
+        },
+        {
+          nome: "Gestão Financeira em Tempo Real",
+          descricao: "Monitoramento de contas a pagar e receitas com categorização inteligente, fluxo de caixa e relatórios gerenciais."
+        },
+        {
+          nome: "Planos de Mensalidades",
+          descricao: "Criação de planos com cobrança automatizada via Pix ou Cartão, excelente para gestão de escolinhas e categorias de base."
+        }
+      ]
+    },
+    {
+      titulo: "Elenco & Estrutura",
+      icone: Users,
+      descricaoSecao: "Profissionalização do departamento de futebol e logística interna.",
+      features: [
+        {
+          nome: "Cadastro e Controle de Atletas",
+          descricao: "Prontuário completo do atleta gerenciando contratos, mensalidades, histórico de lesões e minutagem nas partidas."
+        },
+        {
+          nome: "Agenda Inteligente",
+          descricao: "Calendário organizado de treinos e competições com disparos de lembretes automáticos para toda a comissão técnica."
+        },
+        {
+          nome: "Cofre de Documentos Digital",
+          descricao: "Armazene e organize atestados, certidões e termos legais na nuvem de forma totalmente categorizada e rastreável."
+        }
+      ]
+    },
+    {
+      titulo: "Captação & Receitas",
+      icone: Sparkles,
+      descricaoSecao: "Novas fontes de renda ativas para fortalecer o caixa do clube.",
+      features: [
+        {
+          nome: "Vaquinha Online Nativa",
+          descricao: "Criação ágil de campanhas de arrecadação transparentes para viagens, reformas ou projetos especiais do clube."
+        },
+        {
+          nome: "Bilheteria e Ingressos",
+          descricao: "Venda e gerencie ingressos das partidas com controle digital de acesso e liquidação direta na conta da instituição."
+        },
+        {
+          nome: "Torcedores e Sócio-Torcedor",
+          descricao: "Listagem da base de apoiadores e gestão de planos de sócio com carteirinha digital e benefícios exclusivos."
+        }
+      ]
+    },
+    {
+      titulo: "Operação & Comunicação",
+      icone: Megaphone,
+      descricaoSecao: "Logística interna blindada e conexão de alto impacto com todos.",
+      features: [
+        {
+          nome: "Controle de Almoxarifado",
+          descricao: "Gerencie rigorosamente o estoque e os materiais do clube, desde bolas e coletes até uniformes de jogo."
+        },
+        {
+          nome: "Disparos no WhatsApp Oficial",
+          descricao: "Conecte o WhatsApp do clube e comunique convocações, novidades e avisos para todos com um único disparo."
+        },
+        {
+          nome: "Automação de Lembretes",
+          descricao: "Cobranças automáticas e réguas de relacionamento programadas enviadas diretamente por WhatsApp e e-mail."
+        },
+        {
+          nome: "Gestão de Usuários e Permissões",
+          descricao: "Cadastre membros da diretoria e comissão com níveis de acesso customizados, garantindo total segurança dos dados."
+        }
+      ]
     }
   ];
 
@@ -273,6 +357,194 @@ export default function SoftwareCrmPage({ onNavigate }: { onNavigate: (page: str
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* Tabela/Lista de Funcionalidades por Módulo com Notebook na Diagonal (Tema Escuro) */}
+      <section className="w-full bg-zinc-950 py-12 sm:py-20 mb-28 relative overflow-hidden border-y border-zinc-900 shadow-2xl">
+        {/* Luz de fundo decorativa */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-lime-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-lime-500/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 px-6 relative z-10">
+          <h2 className="text-3xl sm:text-4xl font-display font-black text-white mb-3 tracking-tight">
+            Tudo o que Seu Clube Precisa em <span className="text-lime-400">Um Só Lugar</span>
+          </h2>
+          <p className="text-zinc-400 text-xs sm:text-sm font-light">
+            Conheça as ferramentas e módulos desenvolvidos sob medida para profissionalizar cada setor da sua instituição.
+          </p>
+        </div>
+
+        {/* Container recalibrado para 1280px para uma leitura extremamente elegante e sem linhas longas demais */}
+        <div className="max-w-[1280px] w-full mx-auto px-6 sm:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-0 items-start relative z-10">
+            {/* Coluna da Esquerda: Notebook (O papel de baixo, alinhado à esquerda) */}
+            <div className="lg:col-span-6 relative z-10 transition-all duration-700 ease-out pt-2 lg:pt-0">
+              {/* Efeito de brilho poderoso por trás */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-lime-400/20 via-lime-500/10 to-transparent rounded-3xl blur-2xl transform -rotate-2" />
+              
+              {/* Laptop Container mais compacto e na proporção exata, transbordando na medida ideal */}
+              <div className="w-full lg:w-[110%] xl:w-[115%] relative transform -rotate-3 hover:-rotate-2 origin-left transition-all duration-700 ease-out shadow-2xl rounded-2xl group cursor-pointer">
+                {/* Tampa do Notebook (Moldura da Tela) */}
+                <div className="bg-zinc-800 p-2 sm:p-2.5 rounded-t-xl sm:rounded-t-2xl border-2 sm:border-3 border-zinc-700 shadow-inner">
+                  {/* WebCam dot */}
+                  <div className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-zinc-600 rounded-full mx-auto mb-1.5 sm:mb-2" />
+                  
+                  {/* Tela */}
+                  <div className="bg-zinc-950 rounded-lg overflow-hidden border border-zinc-900 aspect-video relative">
+                    <img 
+                      src={activeTab === "light" ? dashCrmLightImg : dashCrmImg} 
+                      alt="Interface do Software CRM no Notebook" 
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-102"
+                    />
+                    {/* Overlay de reflexo premium */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/10 pointer-events-none" />
+                  </div>
+                </div>
+                
+                {/* Base do Laptop */}
+                <div className="relative">
+                  {/* Faixa metálica superior da base */}
+                  <div className="bg-zinc-700 h-1.5 sm:h-2 rounded-b-xs border-t border-zinc-600/50 flex items-center justify-center">
+                    <div className="w-10 sm:w-14 h-0.5 bg-zinc-800 rounded-full" />
+                  </div>
+                  {/* Base chanfrada inferior */}
+                  <div className="bg-zinc-400 h-1 sm:h-1.5 mx-auto w-[101%] sm:w-[102%] rounded-b-md shadow-lg" />
+                </div>
+              </div>
+
+              {/* Distintivo flutuante de autoridade mais sutil no canto inferior esquerdo */}
+              <div className="absolute -bottom-5 left-0 sm:-bottom-3 sm:left-4 bg-zinc-900 border border-zinc-800 rounded-2xl p-2.5 sm:p-3 shadow-2xl flex items-center gap-2.5 z-20">
+                <div className="w-7 sm:w-8 h-7 sm:h-8 rounded-xl bg-lime-400/10 text-lime-400 flex items-center justify-center font-bold shrink-0">
+                  <CheckCircle2 className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-bold text-zinc-100 leading-none mb-0.5">Módulos Nativos</div>
+                  <div className="text-[9px] text-zinc-400 leading-tight">Sem integrações complexas</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Coluna da Direita: Carrossel/Abas de Funcionalidades (O papel de cima, cobrindo com precisão a lateral) */}
+            <div className="lg:col-span-6 relative z-30 lg:-ml-6 xl:-ml-10 pt-6 lg:pt-0">
+              {/* Navegação por Abas (Tabs) do Carrossel */}
+              <div className="bg-zinc-900 p-1 sm:p-1.5 rounded-xl sm:rounded-2xl border border-zinc-800/80 grid grid-cols-2 sm:grid-cols-4 gap-1 mb-5 sm:mb-6 shadow-2xl">
+                {["Finanças", "Elenco", "Receitas", "Operação"].map((label, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveModuleIndex(idx)}
+                    className={`py-1.5 sm:py-2 px-1 sm:px-2 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold tracking-wide uppercase transition-all duration-300 truncate ${
+                      activeModuleIndex === idx
+                        ? "bg-lime-400 text-zinc-950 shadow-md"
+                        : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Conteúdo do Módulo Ativo com padding e fontes na medida perfeita para uma leitura natural */}
+              <div className="relative min-h-[320px]">
+                {modulosFuncionalidades.map((mod, idx) => {
+                  const IconeModulo = mod.icone;
+                  const isActive = activeModuleIndex === idx;
+                  return (
+                    <div 
+                      key={idx}
+                      className={`transition-all duration-500 absolute inset-0 w-full ${
+                        isActive 
+                          ? "opacity-100 translate-x-0 pointer-events-auto relative z-10" 
+                          : "opacity-0 translate-x-8 pointer-events-none hidden"
+                      }`}
+                    >
+                      <div className="bg-zinc-900/95 backdrop-blur-md border border-zinc-800 rounded-2xl p-5 sm:p-7 shadow-[0_0_40px_rgba(0,0,0,0.8)] lg:shadow-[-20px_0_45px_rgba(0,0,0,0.95)] relative overflow-hidden h-full flex flex-col justify-between">
+                        {/* Detalhe lateral de cor */}
+                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-lime-400" />
+                        
+                        <div>
+                          {/* Cabeçalho da Seção/Módulo */}
+                          <div className="flex items-start gap-3.5 mb-5">
+                            <div className="w-10 h-10 rounded-xl bg-lime-400/10 border border-lime-400/20 flex items-center justify-center text-lime-400 shrink-0">
+                              <IconeModulo className="w-5 h-5" />
+                            </div>
+                            <div>
+                              <h3 className="text-sm sm:text-base font-display font-bold text-white mb-0.5">
+                                {mod.titulo}
+                              </h3>
+                              <p className="text-[11px] text-zinc-400 font-light">
+                                {mod.descricaoSecao}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Lista de Features do Módulo */}
+                          <div className="grid grid-cols-1 gap-3.5 pt-3.5 border-t border-zinc-800/60">
+                            {mod.features.map((feat, fIdx) => (
+                              <div key={fIdx} className="flex gap-2.5 items-start">
+                                <div className="w-3.5 h-3.5 rounded-full bg-lime-500/10 flex items-center justify-center text-lime-400 mt-0.5 shrink-0">
+                                  <div className="w-1 h-1 rounded-full bg-lime-400" />
+                                </div>
+                                <div>
+                                  <h4 className="text-xs font-bold text-zinc-100 mb-0.5">
+                                    {feat.nome}
+                                  </h4>
+                                  <p className="text-[11px] sm:text-xs text-zinc-400 font-light leading-relaxed">
+                                    {feat.descricao}
+                                  </p>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Indicador de passos/pontos na base do card */}
+                        <div className="flex items-center justify-between pt-5 mt-5 border-t border-zinc-800/40">
+                          <div className="flex gap-1.5">
+                            {modulosFuncionalidades.map((_, dotIdx) => (
+                              <button
+                                key={dotIdx}
+                                onClick={() => setActiveModuleIndex(dotIdx)}
+                                className={`h-1 rounded-full transition-all duration-300 ${
+                                  activeModuleIndex === dotIdx ? "w-5 bg-lime-400" : "w-1.5 bg-zinc-700"
+                                }`}
+                              />
+                            ))}
+                          </div>
+                          <span className="text-[9px] text-zinc-500 uppercase tracking-widest font-bold">
+                            Módulo {idx + 1} de {modulosFuncionalidades.length}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Controles Inferiores de Navegação com Setas */}
+              <div className="flex items-center justify-between mt-5 px-1 sm:px-2">
+                <button
+                  onClick={() => setActiveModuleIndex((prev) => (prev === 0 ? modulosFuncionalidades.length - 1 : prev - 1))}
+                  className="flex items-center gap-1.5 text-[11px] sm:text-xs text-zinc-400 hover:text-white transition-colors duration-200 group/btn"
+                >
+                  <div className="w-7 h-7 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover/btn:border-zinc-700 transition-colors">
+                    <span className="text-xs font-bold">{"<"}</span>
+                  </div>
+                  <span className="hidden sm:inline font-medium">Módulo Anterior</span>
+                </button>
+
+                <button
+                  onClick={() => setActiveModuleIndex((prev) => (prev === modulosFuncionalidades.length - 1 ? 0 : prev + 1))}
+                  className="flex items-center gap-1.5 text-[11px] sm:text-xs text-zinc-400 hover:text-white transition-colors duration-200 group/btn"
+                >
+                  <span className="hidden sm:inline font-medium">Próximo Módulo</span>
+                  <div className="w-7 h-7 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center group-hover/btn:border-zinc-700 transition-colors">
+                    <span className="text-xs font-bold">{">"}</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
