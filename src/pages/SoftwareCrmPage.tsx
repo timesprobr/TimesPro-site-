@@ -15,7 +15,13 @@ import {
   Clock,
   FileText,
   TrendingDown,
-  Megaphone
+  Megaphone,
+  Calculator,
+  PiggyBank,
+  Percent,
+  CreditCard,
+  Wallet,
+  Check
 } from "lucide-react";
 import dashCrmImg from "../../imagens/dash crm.png";
 import dashCrmLightImg from "../../imagens/dash crm ligth.png";
@@ -24,6 +30,10 @@ export default function SoftwareCrmPage({ onNavigate }: { onNavigate: (page: str
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [activeTab, setActiveTab] = useState<"light" | "dark">("light");
   const [activeModuleIndex, setActiveModuleIndex] = useState(0);
+  const [isPlanoAnual, setIsPlanoAnual] = useState(true);
+  const [simAtletas, setSimAtletas] = useState(80);
+  const [simMensalidade, setSimMensalidade] = useState(120);
+  const [simVaquinha, setSimVaquinha] = useState(15000);
 
   const problemas = [
     {
@@ -547,6 +557,310 @@ export default function SoftwareCrmPage({ onNavigate }: { onNavigate: (page: str
           </div>
         </div>
       </section>
+
+      {/* Seção de Investimento e Simulador de Receitas (Planos) */}
+      <section className="max-w-7xl mx-auto px-6 sm:px-12 mb-28">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <span className="text-xs font-bold text-lime-600 bg-lime-50 px-3 py-1 rounded-full uppercase tracking-wider border border-lime-100 inline-block mb-3">
+            Investimento Transparente
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-display font-black text-zinc-900 mb-3 tracking-tight">
+            Planos Sob Medida para o <span className="text-lime-600">Seu Crescimento</span>
+          </h2>
+          <p className="text-zinc-600 text-sm sm:text-base font-light">
+            Sem pegadinhas ou custos ocultos. O TimesPro se paga nos primeiros meses apenas com a recuperação de mensalidades atrasadas.
+          </p>
+
+          {/* Toggle Mensal / Anual */}
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <span className={`text-xs font-bold transition-colors ${!isPlanoAnual ? "text-zinc-900" : "text-zinc-400"}`}>
+              Mensal
+            </span>
+            <button
+              onClick={() => setIsPlanoAnual(!isPlanoAnual)}
+              className="w-12 h-6 bg-zinc-900 rounded-full p-1 relative transition-colors focus:outline-hidden"
+              aria-label="Alternar entre plano mensal e anual"
+            >
+              <div 
+                className={`w-4 h-4 bg-lime-400 rounded-full transition-transform duration-300 ${isPlanoAnual ? "translate-x-6" : "translate-x-0"}`} 
+              />
+            </button>
+            <div className="flex items-center gap-2">
+              <span className={`text-xs font-bold transition-colors ${isPlanoAnual ? "text-zinc-900" : "text-zinc-400"}`}>
+                Anual
+              </span>
+              <span className="text-[10px] font-bold text-lime-800 bg-lime-100 px-2 py-0.5 rounded-md uppercase tracking-wider animate-pulse">
+                2 Meses Grátis
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Grid de Duas Colunas: O Plano à Esquerda e O Simulador à Direita */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          
+          {/* Coluna da Esquerda: O Plano (Card Premium) */}
+          <div className="lg:col-span-5 bg-zinc-950 text-white rounded-3xl p-8 sm:p-10 border-2 border-lime-400 shadow-2xl relative flex flex-col justify-between">
+            {/* Tag Popular Superior */}
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-lime-400 text-zinc-950 font-bold text-[10px] uppercase tracking-widest px-4 py-1 rounded-full shadow-md">
+              Acesso Ilimitado
+            </div>
+
+            <div>
+              <div className="flex justify-between items-start mb-6">
+                <div>
+                  <h3 className="text-xl font-display font-bold text-white mb-1">TimesPro CRM</h3>
+                  <p className="text-xs text-zinc-400 font-light">Todas as 13 funcionalidades liberadas</p>
+                </div>
+                <div className="w-10 h-10 rounded-xl bg-lime-400/10 flex items-center justify-center text-lime-400 shrink-0">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+              </div>
+
+              {/* Preço Dinâmico */}
+              <div className="mb-6 pb-6 border-b border-zinc-800/80">
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-xs text-zinc-400 font-bold">R$</span>
+                  <span className="text-4xl sm:text-5xl font-display font-black tracking-tight text-white transition-all duration-300">
+                    {isPlanoAnual ? "2.849" : "297"}
+                  </span>
+                  <span className="text-xs text-lime-400 font-bold">
+                    {isPlanoAnual ? ",90" : ",00"}
+                  </span>
+                  <span className="text-xs text-zinc-500 font-light">
+                    / {isPlanoAnual ? "ano" : "mês"}
+                  </span>
+                </div>
+                {isPlanoAnual && (
+                  <p className="text-[11px] text-lime-400/90 font-light mt-1">
+                    Equivale a apenas R$ 237,49 por mês
+                  </p>
+                )}
+              </div>
+
+              {/* Tabela de Vantagens e Taxas Inclusas */}
+              <div className="space-y-3.5 mb-8">
+                {[
+                  "Atletas e Usuários Ilimitados",
+                  "Dashboard Financeiro em Tempo Real",
+                  "Cobrança Automatizada de Mensalidades",
+                  "Módulo de Vaquinha Online Integrado",
+                  "Cofre Digital e Controle de Almoxarifado",
+                  "Suporte Dedicado e Implementação Guiada"
+                ].map((item, iIdx) => (
+                  <div key={iIdx} className="flex items-center gap-3">
+                    <div className="w-4 h-4 rounded-full bg-lime-400/10 flex items-center justify-center text-lime-400 shrink-0">
+                      <Check className="w-2.5 h-2.5 stroke-[3]" />
+                    </div>
+                    <span className="text-xs text-zinc-300 font-light">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Transparência das Taxas Transacionais */}
+              <div className="bg-zinc-900/80 rounded-xl p-3.5 border border-zinc-800 space-y-2 mb-8">
+                <div className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <Percent className="w-3.5 h-3.5 text-lime-400" />
+                  Taxas de Processamento
+                </div>
+                <div className="text-[11px] text-zinc-300 flex justify-between">
+                  <span className="font-light">Vaquinha Online:</span>
+                  <span className="font-bold text-lime-400">7% sobre o arrecadado</span>
+                </div>
+                <div className="text-[11px] text-zinc-300 flex justify-between">
+                  <span className="font-light">Mensalidades (Pix/Cartão):</span>
+                  <span className="font-bold text-zinc-400">Taxas de mercado</span>
+                </div>
+              </div>
+            </div>
+
+            <button className="w-full py-4 bg-lime-400 hover:bg-lime-300 text-zinc-950 rounded-xl font-bold text-xs uppercase tracking-wider transition-all transform hover:scale-102 shadow-lg shadow-lime-400/10 flex items-center justify-center gap-2">
+              Assinar Plano {isPlanoAnual ? "Anual" : "Mensal"}
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Coluna da Direita: O Simulador Interativo (Card Duplo de Receitas) */}
+          <div className="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 border border-zinc-200 shadow-xl flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-zinc-100">
+                <div className="w-10 h-10 rounded-xl bg-lime-50 flex items-center justify-center text-lime-600 shrink-0">
+                  <Calculator className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-display font-bold text-zinc-900">Simulador de Receita do Clube</h3>
+                  <p className="text-xs text-zinc-500 font-light">Veja quanto seu clube arrecada e recebe limpo</p>
+                </div>
+              </div>
+
+              {/* Parte 1: Simulação de Mensalidades */}
+              <div className="space-y-5 mb-8">
+                <div className="text-xs font-bold text-zinc-800 uppercase tracking-wide flex items-center gap-2">
+                  <Users className="w-4 h-4 text-lime-600" />
+                  1. Arrecadação com Mensalidades (Atletas/Alunos)
+                </div>
+
+                {/* Slider Atletas */}
+                <div className="bg-zinc-50 p-4 rounded-2xl border border-zinc-100">
+                  <div className="flex justify-between items-center mb-2">
+                    <label htmlFor="range-atletas" className="text-xs font-bold text-zinc-700">
+                      Total de Atletas Ativos
+                    </label>
+                    <span className="text-sm font-black text-lime-600 bg-white px-3 py-1 rounded-lg border border-zinc-200 shadow-2xs">
+                      {simAtletas} atletas
+                    </span>
+                  </div>
+                  <input
+                    id="range-atletas"
+                    type="range"
+                    min="10"
+                    max="300"
+                    step="5"
+                    value={simAtletas}
+                    onChange={(e) => setSimAtletas(Number(e.target.value))}
+                    className="w-full accent-lime-600 cursor-pointer h-1.5 bg-zinc-200 rounded-lg"
+                  />
+                  <div className="flex justify-between text-[10px] text-zinc-400 mt-1">
+                    <span>10 atletas</span>
+                    <span>150</span>
+                    <span>300 atletas</span>
+                  </div>
+                </div>
+
+                {/* Slider Mensalidade Média */}
+                <div className="bg-zinc-50 p-4 rounded-2xl border border-zinc-100">
+                  <div className="flex justify-between items-center mb-2">
+                    <label htmlFor="range-mensalidade" className="text-xs font-bold text-zinc-700">
+                      Valor da Mensalidade Média
+                    </label>
+                    <span className="text-sm font-black text-lime-600 bg-white px-3 py-1 rounded-lg border border-zinc-200 shadow-2xs">
+                      R$ {simMensalidade},00
+                    </span>
+                  </div>
+                  <input
+                    id="range-mensalidade"
+                    type="range"
+                    min="30"
+                    max="350"
+                    step="10"
+                    value={simMensalidade}
+                    onChange={(e) => setSimMensalidade(Number(e.target.value))}
+                    className="w-full accent-lime-600 cursor-pointer h-1.5 bg-zinc-200 rounded-lg"
+                  />
+                  <div className="flex justify-between text-[10px] text-zinc-400 mt-1">
+                    <span>R$ 30</span>
+                    <span>R$ 190</span>
+                    <span>R$ 350</span>
+                  </div>
+                </div>
+
+                {/* Resultado do Simulador de Mensalidades */}
+                {(() => {
+                  const bruto = simAtletas * simMensalidade;
+                  // Estimativa de taxa média de transação em 3.5%
+                  const taxa = bruto * 0.035;
+                  const liquido = bruto - taxa;
+                  return (
+                    <div className="bg-zinc-900 text-white p-5 rounded-2xl shadow-inner relative overflow-hidden">
+                      <div className="absolute right-0 top-0 bottom-0 w-2 bg-lime-400" />
+                      <div className="grid grid-cols-2 gap-4 items-center">
+                        <div>
+                          <div className="text-[11px] text-zinc-400 font-light mb-0.5">Arrecadação Bruta:</div>
+                          <div className="text-sm font-bold text-zinc-300">
+                            R$ {bruto.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                          </div>
+                          <div className="text-[10px] text-zinc-500 mt-1">
+                            *Estimativa de taxa transacional: R$ {taxa.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                          </div>
+                        </div>
+
+                        <div className="text-right pr-2">
+                          <div className="text-[11px] text-lime-400 font-bold uppercase tracking-wider mb-0.5">
+                            Você Recebe Limpo:
+                          </div>
+                          <div className="text-xl sm:text-2xl font-display font-black text-white">
+                            R$ {liquido.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                          </div>
+                          <div className="text-[10px] text-zinc-400 font-light">por mês direto na conta</div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+
+              {/* Parte 2: Simulação de Vaquinha Online */}
+              <div className="space-y-4 pt-6 border-t border-zinc-100">
+                <div className="text-xs font-bold text-zinc-800 uppercase tracking-wide flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <PiggyBank className="w-4 h-4 text-lime-600" />
+                    2. Simular Campanha de Vaquinha Online
+                  </div>
+                  <span className="text-[10px] font-bold text-lime-700 bg-lime-50 px-2 py-0.5 rounded border border-lime-200">
+                    Taxa Fixa: 7%
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center bg-zinc-50 p-4 rounded-2xl border border-zinc-100">
+                  <div>
+                    <label htmlFor="input-vaquinha" className="text-[11px] font-bold text-zinc-600 block mb-1">
+                      Meta de Arrecadação (R$)
+                    </label>
+                    <select
+                      id="input-vaquinha"
+                      value={simVaquinha}
+                      onChange={(e) => setSimVaquinha(Number(e.target.value))}
+                      className="w-full bg-white border border-zinc-300 rounded-xl px-3 py-2 text-xs font-bold text-zinc-800 focus:outline-hidden focus:border-lime-600 shadow-2xs"
+                    >
+                      <option value="5000">R$ 5.000,00</option>
+                      <option value="10000">R$ 10.000,00</option>
+                      <option value="15000">R$ 15.000,00</option>
+                      <option value="25000">R$ 25.000,00</option>
+                      <option value="50000">R$ 50.000,00</option>
+                      <option value="100000">R$ 100.000,00</option>
+                    </select>
+                  </div>
+
+                  {(() => {
+                    const taxaVaq = simVaquinha * 0.07;
+                    const liqVaq = simVaquinha - taxaVaq;
+                    return (
+                      <div className="text-right sm:border-l sm:border-zinc-200 sm:pl-4">
+                        <div className="text-[10px] text-zinc-500 font-light mb-0.5">Clube recebe para o projeto:</div>
+                        <div className="text-base font-black text-lime-600">
+                          R$ {liqVaq.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        </div>
+                        <div className="text-[9px] text-zinc-400">Taxa retida: R$ {taxaVaq.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                      </div>
+                    );
+                  })()}
+                </div>
+              </div>
+
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-zinc-100 flex items-center justify-between text-[11px] text-zinc-400">
+              <span className="flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-lime-600" />
+                Repasse seguro e auditável via split
+              </span>
+              <button 
+                onClick={() => {
+                  // Reseta simulação para valores padrão de alta conversão
+                  setSimAtletas(120);
+                  setSimMensalidade(150);
+                  setSimVaquinha(25000);
+                }}
+                className="text-lime-600 font-bold hover:underline"
+              >
+                Resetar Simulação
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
 
       {/* Depoimento / Prova Social Centralizada */}
       <section className="max-w-4xl mx-auto px-6 mb-28 text-center">
