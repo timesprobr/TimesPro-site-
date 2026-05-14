@@ -861,47 +861,6 @@ export default function SoftwareCrmPage({ onNavigate }: { onNavigate: (page: str
         </div>
       </section>
 
-
-      {/* Depoimento / Prova Social Centralizada */}
-      <section className="max-w-4xl mx-auto px-6 mb-28 text-center">
-        <div className="bg-white border border-zinc-200 rounded-3xl p-8 sm:p-12 shadow-lg relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-lime-500 via-lime-400 to-lime-600" />
-          
-          <div className="w-12 h-12 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center mx-auto mb-6 text-zinc-400 shadow-2xs">
-            <Trophy className="w-6 h-6 text-lime-600" />
-          </div>
-
-          <blockquote className="text-lg sm:text-xl text-zinc-800 italic leading-relaxed mb-6 font-serif">
-            "{depoimentos[0].quote}"
-          </blockquote>
-
-          <div className="inline-flex items-center gap-3 bg-zinc-50 px-4 py-2 rounded-full border border-zinc-100">
-            <div className="w-8 h-8 rounded-full bg-zinc-900 text-lime-400 flex items-center justify-center font-bold text-xs">
-              MS
-            </div>
-            <div className="text-left">
-              <div className="text-xs font-bold text-zinc-900">{depoimentos[0].author}</div>
-              <div className="text-[10px] text-zinc-500">{depoimentos[0].role} • {depoimentos[0].club}</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom CTA Premium */}
-      <section className="max-w-3xl mx-auto px-6 text-center bg-zinc-900 text-white rounded-3xl p-12 shadow-2xl relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-lime-500/10 rounded-full blur-3xl pointer-events-none" />
-        
-        <h2 className="text-3xl sm:text-4xl font-display font-black mb-4">
-          Pronto para Subir de Patamar?
-        </h2>
-        <p className="text-zinc-400 text-sm sm:text-base mb-8 max-w-xl mx-auto font-light">
-          A implementação do TimesPro CRM leva menos de 48 horas. Assuma as rédeas da sua gestão e aumente a receita do seu clube nesta temporada.
-        </p>
-        <button className="px-8 py-4 bg-lime-400 text-zinc-950 rounded-xl font-bold text-sm uppercase tracking-wider hover:bg-lime-300 transition-all transform hover:scale-105 shadow-xl shadow-lime-400/20">
-          Solicitar Proposta Comercial
-        </button>
-      </section>
-
     </div>
   );
 }
