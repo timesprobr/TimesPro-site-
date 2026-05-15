@@ -164,7 +164,7 @@ export default function SoftwareCrmPage({ onNavigate }: { onNavigate: (page: str
           {/* Coluna da Esquerda: Headline, Copy, CTA e Prova Social */}
           <div className="lg:col-span-6 text-left order-2 lg:order-1">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-lime-500/10 border border-lime-500/20 text-lime-600 text-[11px] font-black tracking-widest uppercase mb-4 animate-fade-in">
-              <Sparkles className="w-3.5 h-3.5 text-lime-600" /> Sistema Principal • Controladoria G4
+              <Sparkles className="w-3.5 h-3.5 text-lime-600" /> O sistema mais completo para clubes
             </div>
             
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-black tracking-tight text-zinc-900 leading-[1.15] mb-4">
@@ -174,7 +174,7 @@ export default function SoftwareCrmPage({ onNavigate }: { onNavigate: (page: str
             
             <div className="text-xs sm:text-sm text-zinc-600 leading-relaxed font-light mb-6 max-w-xl space-y-2.5">
               <p>
-                O <strong className="text-zinc-900 font-bold">TimesPro CRM</strong> foi criado para trazer controle, organização e novas fontes de receita para a gestão do clube. Financeiro, atletas, documentos, mensalidades, ingressos, vaquinha online e operação administrativa em um só lugar.
+                O <strong className="text-zinc-900 font-bold">TimesPro CRM</strong> foi criado para trazer controle, organization e novas fontes de receita para a gestão do clube. Financeiro, atletas, documentos, mensalidades, ingressos, vaquinha online e operação administrativa em um só lugar.
               </p>
               <p className="font-medium text-zinc-900 border-l-2 border-lime-500 pl-3 py-1 bg-lime-50/50 rounded-r">
                 Seu time joga dentro de campo.<br />
@@ -189,10 +189,13 @@ export default function SoftwareCrmPage({ onNavigate }: { onNavigate: (page: str
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform stroke-[3]" />
               </button>
               <button 
-                onClick={() => onNavigate("home")} 
+                onClick={() => {
+                  const el = document.getElementById('funcionalidades');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="px-5 py-3 bg-white hover:bg-zinc-100 border border-zinc-200 text-zinc-700 rounded-xl font-bold text-xs tracking-wide transition-all flex items-center justify-center shadow-2xs"
               >
-                Voltar para o Início
+                VER FUNCIONALIDADES
               </button>
             </div>
 
@@ -371,7 +374,7 @@ export default function SoftwareCrmPage({ onNavigate }: { onNavigate: (page: str
       </section>
 
       {/* Tabela/Lista de Funcionalidades por Módulo com Notebook na Diagonal (Tema Escuro) */}
-      <section className="w-full bg-zinc-950 py-12 sm:py-20 mb-28 relative overflow-hidden border-y border-zinc-900 shadow-2xl">
+      <section id="funcionalidades" className="w-full bg-zinc-950 py-12 sm:py-20 mb-28 relative overflow-hidden border-y border-zinc-900 shadow-2xl">
         {/* Luz de fundo decorativa */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-lime-500/5 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-lime-500/5 rounded-full blur-3xl pointer-events-none" />

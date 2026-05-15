@@ -42,6 +42,7 @@ import {
   Heart
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import heroImg from "../imagens/001.png";
 import toolsImg from "../imagens/002.png";
 import badgeGaf from "../imagens/GAF.png";
@@ -58,6 +59,7 @@ import brandLogoFull from "../imagens/2e6dbd64-4276-4347-bd93-78bb8fea9ebd.png";
 import logoTp from "../imagens/logo tp.png";
 import logoLight from "../imagens/image-Photoroom (1).png";
 import SoftwareCrmPage from "./pages/SoftwareCrmPage";
+import SoftwareTimesPage from "./pages/SoftwareTimesPage";
 
 function TimesProTools({ onNavigate }: { onNavigate: (page: string) => void }) {
   const toolsCards = [
@@ -548,30 +550,68 @@ function SoftwarePage({ onNavigate }: { onNavigate: (page: string) => void }) {
   ];
 
   return (
-    <div className="pt-32 pb-24 px-6 max-w-7xl mx-auto relative overflow-hidden bg-zinc-950 text-white min-h-screen">
-      {/* Glow de Fundo Subjacente */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-lime-500/10 rounded-full blur-[140px] pointer-events-none" />
+    <div className="bg-zinc-950 min-h-screen overflow-hidden">
+      {/* Hero Section com Fundo Escuro Original e Imagem */}
+      <section className="relative pt-32 pb-20 overflow-hidden bg-zinc-950">
+        {/* Glows de Fundo para dar profundidade */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-lime-500/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-lime-500/5 rounded-full blur-[100px] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-left"
+            >
+              <span className="inline-block text-lime-400 font-black uppercase tracking-[0.3em] text-[10px] mb-4 px-4 py-1.5 bg-lime-400/10 rounded-full border border-lime-400/20">
+                TECNOLOGIA PROPRIETÁRIA
+              </span>
+              <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight mb-6">
+                <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400">Nossos Softwares</span> <br />
+                <span className="text-lime-500">Exclusivos</span>
+              </h1>
+              <p className="text-lg text-zinc-400 leading-relaxed font-light max-w-xl">
+                Conheça as soluções desenvolvidas nativamente para colocar a gestão, a presença digital e a operação do seu time no mais alto nível de profissionalismo.
+              </p>
+              
+              <div className="mt-10">
+                <button 
+                  onClick={() => {
+                    const el = document.getElementById('software-list');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="px-8 py-4 bg-lime-400 text-zinc-950 rounded-xl font-black text-xs uppercase tracking-widest hover:bg-lime-300 transition-all shadow-lg shadow-lime-400/20 hover:scale-105"
+                >
+                  Explorar Softwares
+                </button>
+              </div>
+            </motion.div>
 
-      {/* Cabeçalho de Altíssimo Impacto */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="max-w-3xl mx-auto text-center mb-20 relative z-10"
-      >
-        <span className="inline-block text-lime-400 font-black uppercase tracking-[0.3em] text-xs mb-4 px-4 py-1.5 bg-lime-400/10 rounded-full border border-lime-400/20">
-          TECNOLOGIA PROPRIETÁRIA
-        </span>
-        <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight mb-6">
-          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400">Nossos Softwares</span> <br />
-          <span className="text-lime-500">Exclusivos</span>
-        </h1>
-        <p className="text-lg text-zinc-400 leading-relaxed font-light">
-          Conheça as soluções desenvolvidas nativamente para colocar a gestão, a presença digital e a operação do seu time no mais alto nível de profissionalismo.
-        </p>
-      </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative"
+            >
+              {/* Efeito de brilho atrás da foto */}
+              <div className="absolute inset-0 bg-lime-500/20 blur-3xl rounded-full opacity-30 transform scale-75" />
+              <div className="relative rounded-[40px] overflow-hidden border border-white/10 bg-zinc-900/50 backdrop-blur-sm p-3 shadow-2xl">
+                <img 
+                  src={toolsImg} 
+                  alt="Equipe e Softwares TimesPro" 
+                  className="w-full h-auto rounded-[30px] drop-shadow-2xl"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* Lista Horizontal Alternada (Z-Pattern) */}
-      <div className="flex flex-col gap-16 lg:gap-24 relative z-10">
+      <div id="software-list" className="pt-24 pb-24 px-6 max-w-7xl mx-auto relative z-10 flex flex-col gap-16 lg:gap-24">
+        {/* Glow de Fundo Subjacente */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-lime-500/10 rounded-full blur-[140px] pointer-events-none" />
         {softwares.map((sw, idx) => (
           <motion.div
             key={idx}
@@ -670,6 +710,7 @@ function SoftwarePage({ onNavigate }: { onNavigate: (page: string) => void }) {
                   <button 
                     onClick={() => {
                       if (idx === 0) onNavigate("crm");
+                      else if (idx === 1) onNavigate("timespage");
                       else onNavigate("tools");
                     }}
                     className={`px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider transition-all inline-flex items-center gap-2 group/btn shadow-lg ${
@@ -678,7 +719,7 @@ function SoftwarePage({ onNavigate }: { onNavigate: (page: string) => void }) {
                         : "bg-zinc-950 hover:bg-lime-400 text-zinc-300 hover:text-zinc-950 border border-zinc-800 hover:border-lime-400"
                     }`}
                   >
-                    <span>{idx === 0 ? "Conhecer TimesPro CRM" : "Conhecer funcionalidade"}</span>
+                    <span>{idx === 0 ? "Conhecer TimesPro CRM" : idx === 1 ? "Explorar TimesPage" : "Conhecer funcionalidade"}</span>
                     <ChevronRight className={`w-4 h-4 group-hover/btn:translate-x-1 transition-all ${idx === 0 ? 'text-zinc-950 stroke-[3]' : 'text-lime-400 group-hover/btn:text-zinc-950'}`} />
                   </button>
                 </div>
@@ -723,7 +764,25 @@ function SoftwarePage({ onNavigate }: { onNavigate: (page: string) => void }) {
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [currentPage, setCurrentPage] = useState("home");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const currentPage = location.pathname === "/" ? "home" : 
+                    location.pathname === "/softwares" ? "software" :
+                    location.pathname === "/solucoes" ? "tools" :
+                    location.pathname === "/timesprocrm" ? "crm" :
+                    location.pathname === "/timespage" ? "timespage" : "home";
+
+  const setCurrentPage = (page: string) => {
+    const path = page === "home" ? "/" : 
+                 page === "software" ? "/softwares" :
+                 page === "tools" ? "/solucoes" :
+                 page === "crm" ? "/timesprocrm" :
+                 page === "timespage" ? "/timespage" : "/";
+    navigate(path);
+    setIsMenuOpen(false);
+    window.scrollTo(0, 0);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -772,7 +831,7 @@ export default function App() {
     }
   ];
 
-  const isDarkPage = currentPage === 'home' || currentPage === 'software';
+  const isDarkPage = currentPage === 'home' || currentPage === 'software' || currentPage === 'crm' || currentPage === 'timespage';
 
   return (
     <div className={`min-h-screen transition-colors duration-500 ${isDarkPage ? 'bg-zinc-950 text-white' : 'bg-[#f8f9fa] text-zinc-900'}`}>
@@ -823,14 +882,13 @@ export default function App() {
         </motion.div>
       )}
 
-      {currentPage === "tools" ? (
-        <TimesProTools onNavigate={setCurrentPage} />
-      ) : currentPage === "software" ? (
-        <SoftwarePage onNavigate={setCurrentPage} />
-      ) : currentPage === "crm" ? (
-        <SoftwareCrmPage onNavigate={setCurrentPage} />
-      ) : (
-        <>
+      <Routes>
+        <Route path="/solucoes" element={<TimesProTools onNavigate={setCurrentPage} />} />
+        <Route path="/softwares" element={<SoftwarePage onNavigate={setCurrentPage} />} />
+        <Route path="/timesprocrm" element={<SoftwareCrmPage onNavigate={setCurrentPage} />} />
+        <Route path="/timespage" element={<SoftwareTimesPage onNavigate={setCurrentPage} />} />
+        <Route path="/" element={
+          <>
           {/* Hero Section */}
           <section className="relative pt-24 pb-24 overflow-hidden h-screen min-h-[620px] max-h-[900px] flex items-center">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
@@ -1247,8 +1305,9 @@ export default function App() {
 
             </div>
           </section>
-        </>
-      )}
+          </>
+        } />
+      </Routes>
 
       {/* Footer */}
       <footer className={`py-20 border-t px-6 transition-colors duration-300 ${isDarkPage ? 'border-white/5 bg-zinc-950' : 'border-zinc-200 bg-white'}`}>
